@@ -1,6 +1,9 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/localdb
+    url: jdbc:postgresql://localhost:5432/local_db
     username: devuser
     password: devpass
     driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
