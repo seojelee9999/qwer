@@ -1,6 +1,14 @@
 spring:
   application:
     name: team-project
+  datasource:
+    url: jdbc:postgresql://prod_db:5432/prod_main_db
+    username: produser
+    password: prodpass
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
 
 server:
   port: 8585
@@ -11,7 +19,7 @@ server:
 
 springdoc:
   swagger-ui:
-    path: /docs/swagger
+    path: /api.name/docs/swagger
     enabled: true
     try-it-out-enabled: true
   api-docs:

@@ -2,7 +2,7 @@ spring:
   application:
     name: team-project
   datasource:
-    url: jdbc:postgresql://localhost:5432/local_db
+    url: jdbc:postgresql://dev_db:5432/dev_db
     username: devuser
     password: devpass
     driver-class-name: org.postgresql.Driver
@@ -11,7 +11,7 @@ spring:
       ddl-auto: update
 
 server:
-  port: 8585
+  port: 8686
   error:
     include-stacktrace: always
     include-message: always
@@ -19,7 +19,7 @@ server:
 
 springdoc:
   swagger-ui:
-    path: /api.local/docs/swagger
+    path: /api.test/docs/swagger
     enabled: true
     try-it-out-enabled: true
   api-docs:
