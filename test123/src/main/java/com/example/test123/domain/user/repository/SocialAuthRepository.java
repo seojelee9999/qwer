@@ -1,0 +1,17 @@
+package com.example.test123.domain.user.repository;
+
+import com.example.test123.domain.user.entity.SocialAuth;
+import com.example.test123.domain.user.entity.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+import java.util.Optional;
+
+@Repository
+public interface SocialAuthRepository extends JpaRepository<SocialAuth, Long> {
+
+    Optional<SocialAuth> findByProviderAndSocialId(String provider, String socialId);
+
+    List<SocialAuth> findByUser(User user);
+}
