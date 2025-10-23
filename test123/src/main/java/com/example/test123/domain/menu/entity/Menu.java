@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "menu")
+@Table(name = "menus")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -23,24 +23,18 @@ public class Menu {
     @Column(nullable = false, length = 50)
     private String name;
 
-    @Column(nullable = false, precision = 10, scale = 2)
+    @Column(nullable = false)
     private BigDecimal price;
-
-    @Column(columnDefinition = "TEXT")
-    private String description;
 
     @Column(name = "menu_picture", length = 500)
     private String menuPicture;
 
-    @Column(name = "menu_content", length = 255)
-    private String menuContent;
-
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "category_id", nullable = false)
+    @JoinColumn(name = "category_id")
     private Category category;
 
-    @Column(nullable = false)
-    private Boolean available = true;
+    @Column
+    private Boolean available = false;
 
     @Column(name = "stock_quantity")
     private Integer stockQuantity;

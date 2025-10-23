@@ -1,5 +1,6 @@
 package com.example.test123.domain.order.entity;
 
+import com.example.test123.domain.cafeteria.entity.Cafeteria;
 import com.example.test123.domain.user.entity.User;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -25,20 +26,18 @@ public class Order {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @Column(name = "total_amount", nullable = false, precision = 10, scale = 2)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "cafeteria_id", nullable = false)
+    private Cafeteria cafeteria;
+
+    @Column(name = "total_amount", nullable = false)
     private BigDecimal totalAmount;
 
     @Column(nullable = false)
-    private Short status = 1; // 1=PENDING, 2=CONFIRMED, 3=PREPARING, 4=READY, 5=COMPLETED, 6=CANCELLED
+    private Short status = 0;
 
     @Column(name = "order_number", nullable = false, unique = true, length = 20)
     private String orderNumber;
-
-    @Column(name = "pickup_time")
-    private LocalDateTime pickupTime;
-
-    @Column(name = "estimated_ready_time")
-    private LocalDateTime estimatedReadyTime;
 
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;

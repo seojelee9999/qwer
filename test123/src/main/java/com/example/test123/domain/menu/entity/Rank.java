@@ -8,7 +8,7 @@ import lombok.Setter;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "rank")
+@Table(name = "ranks")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -23,11 +23,6 @@ public class Rank {
     @JoinColumn(name = "menu_id", nullable = false)
     private Menu menu;
 
-    @Column(nullable = false, length = 10)
-    private String period;
-
-    @Column(name = "rank_date", nullable = false)
-    private LocalDate rankDate;
 
     @Column(nullable = false)
     private Integer volume;

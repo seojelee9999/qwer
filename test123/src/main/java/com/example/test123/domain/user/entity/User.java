@@ -19,30 +19,23 @@ public class User {
     @Column(name = "user_id")
     private Long userId;
 
-
-    @Column(name = "user_name", nullable = false, length = 30)
-    private String userName;
-
-    @Column(nullable = false, unique = true, length = 100)
-    private String email;
-    public User(String name, String email) {
-        this.userName = name;
-        this.email = email;
-    }
-    @Column(nullable = false, length = 255)
-    private String password;
-
-    @Column(length = 20)
-    private String phone;
+    @Column(name = "student_number", nullable = false, unique = true, length = 20)
+    private String studentNumber;
 
     @Column(nullable = false, length = 10)
-    private String role = "USER";
+    private String role;
+
+    @Column(name = "user_name", nullable = false, length = 20)
+    private String userName;
 
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
     @Column(name = "updated_at", nullable = false)
     private LocalDateTime updatedAt;
+
+    @Column(name = "set_profile", nullable = false)
+    private Boolean setProfile = false;
 
     @PrePersist
     protected void onCreate() {
@@ -55,9 +48,8 @@ public class User {
         updatedAt = LocalDateTime.now();
     }
 
-    public User(String userName, String email, String password) {
-        this.userName = userName;
-        this.email = email;
-        this.password = password;
+    public User(String studentNumber, String role) {
+        this.studentNumber = studentNumber;
+        this.role = role;
     }
 }

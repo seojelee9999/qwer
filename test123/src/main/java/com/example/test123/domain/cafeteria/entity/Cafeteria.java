@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "cafeteria")
+@Table(name = "cafeterias")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -17,14 +17,11 @@ public class Cafeteria {
     @Column(name = "cafeteria_id")
     private Long cafeteriaId;
 
-    @Column(nullable = false, length = 50)
+    @Column(nullable = false, length = 20)
     private String name;
 
     @Column(length = 100)
     private String description;
-
-    @Column(name = "operating_hours", length = 100)
-    private String operatingHours;
 
     @Column(nullable = false, length = 100)
     private String address;

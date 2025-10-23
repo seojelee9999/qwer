@@ -11,9 +11,5 @@ import java.util.List;
 @Repository
 public interface RankRepository extends JpaRepository<Rank, Long> {
 
-    List<Rank> findByPeriodAndRankDate(String period, LocalDate rankDate);
 
-    List<Rank> findByMenu(Menu menu);
-
-    List<Rank> findByPeriodAndRankDateOrderByRankPositionAsc(String period, LocalDate rankDate);
 }

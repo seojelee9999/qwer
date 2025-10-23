@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "payment")
+@Table(name = "payments")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -20,18 +20,18 @@ public class Payment {
     @Column(name = "payment_id")
     private Long paymentId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "order_id", nullable = false)
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "order_id", nullable = false, unique = true)
     private Order order;
 
-    @Column(nullable = false, precision = 10, scale = 2)
+    @Column(nullable = false)
     private BigDecimal amount;
 
     @Column(name = "payment_method", nullable = false)
-    private Short paymentMethod = 1; // 1=CARD, 2=CASH, 3=MOBILE, 4=STUDENT_CARD
+    private Short paymentMethod;
 
     @Column(name = "payment_status", nullable = false)
-    private Short paymentStatus = 1; // 1=PENDING, 2=COMPLETED, 3=FAILED, 4=REFUNDED
+    private Short paymentStatus;
 
     @Column(name = "transaction_id", length = 100)
     private String transactionId;

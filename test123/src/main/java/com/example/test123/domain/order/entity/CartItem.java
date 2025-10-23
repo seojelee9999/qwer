@@ -9,9 +9,7 @@ import lombok.Setter;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "cart_item", uniqueConstraints = {
-    @UniqueConstraint(columnNames = {"cart_id", "menu_id"})
-})
+@Table(name = "cart_items")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -23,16 +21,13 @@ public class CartItem {
     private Long cartItemId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "cart_id", nullable = false)
-    private Cart cart;
-
-    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "menu_id", nullable = false)
     private Menu menu;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "cart_id", nullable = false)
+    private Cart cart;
+
     @Column(nullable = false)
     private Integer quantity = 1;
-
-    @Column(nullable = false, precision = 10, scale = 2)
-    private BigDecimal price;
 }
